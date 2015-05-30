@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+	<title>Angela Kong</title>
+	<link rel="stylesheet" type="text/css" href="css/main.css"/>
+	<!-- Load the Paper.js library -->
+	<script type="text/javascript" src="js/paper-full.js"></script>
+	<h1>My Year in Shapshots</h1>
+</head>
+<body>
+	<canvas id = "myCanvas" width="500" height="500"></canvas>
+	<!-- Load PaperScript -->
+	<script type="text/paperscript" canvas="myCanvas">
+	// Get the canvas element form the page
+	var canvas = document.getElementById("myCanvas");
+    var context = canvas.getContext('2d');
+    var size=100;
+    // function loadImages(sources, callback) {
+    //     var images = {};
+    //     var loadedImages = 0;
+    //     var numImages = 0;
+    //     // get num of sources
+    //     for (var src in sources) {
+    //       numImages++;
+    //     }
+    //     for(var src in sources) {
+    //         images[src] = new Image();
+    //         images[src].onload = function() {
+    //         if(++loadedImages >= numImages) {
+    //             callback(images);
+    //         }
+    //     };
+    //     images[src].src = sources[src];
+    //     }
+    // }
+    // var sources = {
+    //     first:'http://www.reneeangelafilice.com/gallery/hoover-tower.jpg',
+    //     second:'http://www.boiseweekly.com/imager/alan-stanford-palouse-farm-watercolor-10-x-10/b/zoom/1348426/d8aa/picks1-1.jpg'
+    //     third: 'https://img0.etsystatic.com/040/1/6172748/il_170x135.516414630_l99l.jpg';
+    // };
+
+    // loadImages(sources, function(images) {
+    //     context.drawImage(images.first, 100, 150, size, size);
+    //     context.drawImage(images.second, 350, 170, size, size);
+    // });
+
+
+    // var images = ['https://img1.etsystatic.com/000/2/6172748/il_570xN.314298993.jpg', 'slide2.png', 'slide3.png'];
+    // Assign onload handler to each image in array
+    // for (var i = 0; i <= images.length; i++){
+    //     var img = new Image();
+    //     img.onload = function() {
+    //         context.drawImage(images[value], 0*i, 150, size, size);
+    //     };
+    //     img.src = 'images/' + images[i];
+    // }
+
+    var imageObj = new Image();
+    imageObj.onload = function() {
+        context.drawImage(imageObj, 75, 150, size, size);
+    };
+    imageObj.src = 'https://img1.etsystatic.com/000/2/6172748/il_570xN.314298993.jpg';
+
+    context.beginPath();
+    context.moveTo(0, 102); //context.moveTo(startingX, startingY)
+    context.bezierCurveTo(346, 247, 755, 37, 1022, 103); //(firstX, firstY, secondX, secondY, endingX, endingY)
+    context.lineWidth = 3;
+    context.font='20px Happy Fox';
+    context.fillText("Use the keyboard to scroll through my year!", 360, 400);
+    //line color
+    context.strokeStyle = 'white';
+    context.stroke();
+	</script>
+</body>
+</html>

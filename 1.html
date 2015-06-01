@@ -5,7 +5,7 @@
 	<title>Angela Kong</title>
 	<link rel="stylesheet" type="text/css" href="css/main.css"/>
 	<!-- Load the Paper.js library -->
-	<script type="text/javascript" src="js/paper-full.js"></script>
+	<script type="text/javascript" src="js/paper-full.min.js"></script>
 	<h1>My Year in Shapshots</h1>
 </head>
 <body>
@@ -46,21 +46,39 @@
     // });
 
 
-    // var images = ['https://img1.etsystatic.com/000/2/6172748/il_570xN.314298993.jpg', 'slide2.png', 'slide3.png'];
-    // Assign onload handler to each image in array
-    // for (var i = 0; i <= images.length; i++){
-    //     var img = new Image();
-    //     img.onload = function() {
-    //         context.drawImage(images[value], 0*i, 150, size, size);
-    //     };
-    //     img.src = 'images/' + images[i];
-    // }
+    var imageSrc = ['003.jpg', '004.jpg','005.jpg','006.png'];
+    var images = [];
+    var imageCount = imageSrc.length;
+    var imagesLoaded = 0;
+    var coordinates = [[75,150],[200,150],[350,150],[600,150]];
+    // //Assign onload handler to each image in array
+    for (var i_ = 0; i_ < imageCount; i_++){
+        var img = new Image();
+        images.push(img);
+        img.onload = function(){
+            imagesLoaded++;
+            if (imagesLoaded == imageCount){
+                for (var j_ = 0; j_ < imageCount; j_++){
+                    var imgToDraw = images[j_];
+                    context.drawImage(imgToDraw,coordinates[j_][0],coordinates[j_][1],size,size);
+                }
+            }
+        }
+        img.src = "images/" + imageSrc[i_];
+        
+   }
 
-    var imageObj = new Image();
-    imageObj.onload = function() {
-        context.drawImage(imageObj, 75, 150, size, size);
-    };
-    imageObj.src = 'https://img1.etsystatic.com/000/2/6172748/il_570xN.314298993.jpg';
+    // var imageObj = new Image();
+    // imageObj.onload = function() {
+    //     context.drawImage(imageObj, 75, 150, size, size);
+    // };
+    // imageObj.src = 'https://img1.etsystatic.com/000/2/6172748/il_570xN.314298993.jpg';
+
+    // var imageObj2 = new Image();
+    // imageObj2.onload = function(){
+    //     context.drawImage(imageObj2, 200, 150, size,size);
+    // };
+    // imageObj2.src = "004.jpg"
 
     context.beginPath();
     context.moveTo(0, 102); //context.moveTo(startingX, startingY)
